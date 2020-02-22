@@ -1,26 +1,102 @@
 <!DOCTYPE html>
 <html>
+
   <head>
-    <title>My Website</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed|Simonetta&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico">
+    <title>My Budget App</title>
   </head>
+
   <body>
-    <h1>My Header</h1>
-    <p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</strong></p>
-    <ul>
-      <li><a href="">Corgi</a>
-          <br><img alt="corgi" src="https://ya-webdesign.com/transparent250_/png-corgi-5.png" height="100" width="100">
-      </li>
-      <li><a href="https://www.akc.org/dog-breeds/scottish-terrier/">Scottish Terrier</a>
-        <br><img alt="corgi" src="https://ya-webdesign.com/transparent250_/terrier-drawing-scottish-15.png" height="100" width="100">
-      </li>
-      <li><a href="pug.html">Pug</a>
-        <br><img alt="corgi" src="https://www.stickpng.com/assets/images/5a005222092a74e5b928e76c.png" height="100" width="100">
-      </li>
-    </ul>
-    <ol>
-      <li>item 1</li>
-      <li>item 2</li>
-      <li>item 3</li>
-    </ol>
+    <header>
+      <img src="pinkwatercolor.png" width=90%>
+      <h1>CURRENT BALANCE</h1>
+      <div class="my-balance card">
+        <div class="card-body">
+          $15,000
+        </div>
+      </div>
+      <button type="button" class="btn btn-lg btn-outline-primary">Add/Deduct Ammount</button>
+      <button type="button" class="btn btn-lg btn-outline-primary">Settings</button>
+      <br><br>
+    </header>
+
+    <section class="history">
+      <h2>Friday, Februrary 21</h2>
+      <br>
+      <table class= "table table-striped">
+        <thead class="table-head">
+          <tr>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Balance</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rent</td>
+            <td>-1250.00</td>
+            <td>$15,000.00</td>
+            <td><img src="https://image.flaticon.com/icons/svg/1159/1159633.svg" class="edit"></td>
+          </tr>
+          <tr>
+            <td>Rent</td>
+            <td>-1250.00</td>
+            <td>$15,000.00</td>
+            <td><img src="https://image.flaticon.com/icons/svg/1159/1159633.svg" class="edit"></td>
+          </tr>
+          <tr>
+            <td>Rent</td>
+            <td>-1250.00</td>
+            <td>$15,000.00</td>
+            <td><img src="https://image.flaticon.com/icons/svg/1159/1159633.svg" class="edit"></td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+    </section>
+
+    <section class="history">
+      <h2>Thursday, Februrary 20</h2>
+      <br>
+      <table class= "table table-striped">
+        <!-- <thead class="table-head">
+          <tr>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Balance</th>
+          </tr>
+        </thead> -->
+        <tbody>
+          <tr>
+            <td>Rent</td>
+            <td>-1250.00</td>
+            <td>$15,000.00</td>
+            <td><img src="https://image.flaticon.com/icons/svg/1159/1159633.svg" class="edit"></td>
+          </tr>
+          <tr>
+            <td>Rent</td>
+            <td>-1250.00</td>
+            <td>$15,000.00</td>
+            <td><img src="https://image.flaticon.com/icons/svg/1159/1159633.svg" class="edit"></td>
+          </tr>
+          <tr>
+            <td>Rent</td>
+            <td>-1250.00</td>
+            <td>$15,000.00</td>
+            <td><img src="https://image.flaticon.com/icons/svg/1159/1159633.svg" class="edit"></td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+    </section>
+
+    <footer>
+      <img src="pinkwatercolor.png" width=90%>
+    </footer>
   </body>
+
 </html>
