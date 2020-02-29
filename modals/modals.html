@@ -1,0 +1,71 @@
+<!-- Add Item Modal -->
+<div class="modal fade" id="addRemoveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ADD ITEM</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="item-name">
+          <label for="itemName"><strong>Item Name</strong></label>
+          <input type="text" name="itemname" value="" class="itemName">
+        </div>
+        <div id="item-amount">
+          <label for="itemAmount"><strong>Account</strong></label>
+          <input type="text" name="Amount" value="" class="itemAmount">
+        </div>
+        <div id="item-date">
+          <label for="itemDate"><strong>Date</strong></label>
+          <input type="date" name="Date" value="" class="itemDate">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Settings Modal -->
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">AUTO ADD ITEM</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="auto-item-name">
+          <label for="itemName"><strong>Item Name</strong></label>
+          <input type="text" name="itemname" value="" class="autoItemName">
+        </div>
+        <div id="auto-item-amount">
+          <label for="itemAmount"><strong>Account</strong></label>
+          <input type="text" name="Amount" value="" class="autoItemAmount">
+        </div>
+        <div id="auto-item-date">
+          <label for="itemDate"><strong>Date</strong></label>
+          <input type="date" name="Date" value="" class="autoItemDate">
+        </div>
+        <div id="auto-frequency">
+          <label for="autoItemFrequency"><strong>Frequency</strong></label>
+          <select class="autoItemFrequency" name="Frequency">
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
