@@ -2,12 +2,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 app.use(bodyParser.urlencoded({extended:true}));
-const port = 3000;
+const port = process.env.PORT;
 
 
 app.use(express.static("public"));
 
-app.listen(port, function(){
+app.listen(port||3000, function(){
   console.log("Listening on port "+port);
 });
 
@@ -31,14 +31,14 @@ app.post("/",function(req,res){
   console.log(itemName+" "+itemAmount+" "+itemDate+" "+itemFrequency);
 });
 
-$("input").change(function(){
-  alert("The text has been changed.");
-});
+// $("input").change(function(){
+//   alert("The text has been changed.");
+// });
 
 //settings Post
 
 //Edit Item
-// 
+//
 // var today = new Date();
 // var dd = String(today.getDate()).padStart(2, '0');
 // var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
