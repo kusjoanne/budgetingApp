@@ -33,22 +33,12 @@ app.post("/",function(req,res){
 //   console.log(itemName+" "+itemAmount+" "+itemDate+" "+itemFrequency);
 // });
 
-// $("input").change(function(){
-//   alert("The text has been changed.");
-// });
+var today = new Date();
+var options = {weekday:'long', year:'numeric', month:'long', day:'numeric'};
+const todaysDate =today.toLocaleDateString("en-US",options);
+console.log(todaysDate);
 
-//settings Post
-
-//Edit Item
-//
-// var today = new Date();
-// var dd = String(today.getDate()).padStart(2, '0');
-// var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-// var yyyy = today.getFullYear();
-//
-// today = mm + '/' + dd + '/' + yyyy;
-//
-// //will eventually need to be populated differently
+// will eventually need to be populated differently
 // document.querySelector(".items-date").textContent = today;
 //
 // $("#addItem").click(function(){
