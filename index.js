@@ -1,6 +1,9 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
+app.use(bodyParser.urlencoded({extended:true}));
 const port = 3000;
+
 
 app.use(express.static("public"));
 
@@ -10,7 +13,31 @@ app.listen(port, function(){
 
 app.get("/", function(req,res){
   res.sendFile(__dirname+"/index.html");
-})
+});
+
+//Add Item
+app.post("/",function(req,res){
+  const itemName = req.body.itemName;
+  const itemAmount = req.body.itemAmount;
+  const itemDate = req.body.itemDate;
+  console.log(itemName+" "+itemAmount+" "+itemDate);
+});
+
+app.post("/",function(req,res){
+  const itemName = req.body.itemName;
+  const itemAmount = req.body.itemAmount;
+  const itemDate = req.body.itemDate;
+  const itemFrequency = req.body.itemFrequency;
+  console.log(itemName+" "+itemAmount+" "+itemDate+" "+itemFrequency);
+});
+
+$("input").change(function(){
+  alert("The text has been changed.");
+});
+
+//settings Post
+
+//Edit Item
 
 // var today = new Date();
 // var dd = String(today.getDate()).padStart(2, '0');
