@@ -1,7 +1,9 @@
+//jshint esversion:6
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.static("public"));
 const port = process.env.PORT;
 
 
@@ -22,14 +24,14 @@ app.post("/",function(req,res){
   const itemDate = req.body.itemDate;
   console.log(itemName+" "+itemAmount+" "+itemDate);
 });
-
-app.post("/",function(req,res){
-  const itemName = req.body.itemName;
-  const itemAmount = req.body.itemAmount;
-  const itemDate = req.body.itemDate;
-  const itemFrequency = req.body.itemFrequency;
-  console.log(itemName+" "+itemAmount+" "+itemDate+" "+itemFrequency);
-});
+//
+// app.post("/",function(req,res){
+//   const itemName = req.body.itemName;
+//   const itemAmount = req.body.itemAmount;
+//   const itemDate = req.body.itemDate;
+//   const itemFrequency = req.body.itemFrequency;
+//   console.log(itemName+" "+itemAmount+" "+itemDate+" "+itemFrequency);
+// });
 
 // $("input").change(function(){
 //   alert("The text has been changed.");
