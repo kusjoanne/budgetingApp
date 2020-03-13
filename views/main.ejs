@@ -1,0 +1,135 @@
+<%- include("header") -%>
+
+  <h1>CURRENT BALANCE</h1>
+  <div class="my-balance card">
+    <div class="card-body">
+      $15,000
+    </div>
+  </div>
+  <button type="button" class="btn btn-lg btn-outline-primary add-remove-btn" data-toggle="modal" data-target="#addItemModal">Add Item</button>
+  <button type="button" class="btn btn-lg btn-outline-primary settings-btn" data-toggle="modal" data-target="#settingsModal">Settings</button>
+  <br><br>
+
+    <!-- add dropdown
+      3 days, 7 days, 14 days, 30 days
+     on switch call a new post method that runs a query and reloads the page using the new results-->
+    <div class="dropdown show">
+      <a class="btn btn-secondary btn-lg dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown link
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="#" selected="selected">3 Days</a>
+        <a class="dropdown-item" href="#">7 Days</a>
+        <a class="dropdown-item" href="#">14 Days</a>
+        <a class="dropdown-item" href="#">30 Days</a>
+      </div>
+    </div>
+
+  <section class="history">
+    <% allDates.forEach(function(itemDate){ %>
+      <h2><%= itemDate.date.toDateString() %></h2>
+      <br>
+      <table class="table table-striped">
+        <thead class="table-head">
+          <tr>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Balance</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% itemDate.items.forEach(function(item){ %>
+            <tr>
+              <td><%= item.name %></td>
+              <td>$<%= item.amount.toFixed(2) %></td>
+              <td>$15,000.00</td>
+              <td>
+                <input type="image" src="https://image.flaticon.com/icons/svg/1159/1159633.svg" class="edit" data-toggle="modal" data-target="#addItemModal">
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <br>
+    <% }); %>
+  </section>
+
+  <!-- Add Item Modal -->
+  <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form class="" action="/" method="post">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">ADD ITEM</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id="item-name">
+              <label for="itemName"><strong>Item Name</strong></label>
+              <input type="text" name="itemName" value="" class="itemName">
+            </div>
+            <div id="item-amount">
+              <label for="itemAmount"><strong>Amount</strong></label>
+              <input type="text" name="itemAmount" value="" class="itemAmount">
+            </div>
+            <div id="item-date">
+              <label for="itemDate"><strong>Date</strong></label>
+              <input type="date" name="itemDate" value="" class="itemDate">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" id="addItem" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!--Settings Modal -->
+  <div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form class="" action="/" method="post">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">AUTO ADD ITEM</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id="auto-item-name">
+              <label for="itemNameR"><strong>Item Name</strong></label>
+              <input type="text" name="itemNameR" value="" class="autoItemName">
+            </div>
+            <div id="auto-item-amount">
+              <label for="itemAmountR"><strong>Amount</strong></label>
+              <input type="text" name="itemAmountR" value="" class="autoItemAmount">
+            </div>
+            <div id="auto-item-date">
+              <label for="itemDateR"><strong>Date</strong></label>
+              <input type="date" name="itemDateR" value="" class="autoItemDate">
+            </div>
+            <div id="auto-frequency">
+              <label for="itemFrequency"><strong>Frequency</strong></label>
+              <select class="autoItemFrequency" name="itemFrequency">
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
+                <option value="monthly">Monthly</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<%- include("footer") -%>

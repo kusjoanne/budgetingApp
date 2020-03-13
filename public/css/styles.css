@@ -28,6 +28,10 @@ h2{
 footer{
   transform: scaleY(-1);
 }
+
+.watercolor{
+  width: 90%
+}
 .table{
   width: 70%;
   margin:auto;
