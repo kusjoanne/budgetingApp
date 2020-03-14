@@ -38,7 +38,7 @@
               <td><%= item.name %></td>
               <td>$<%= item.amount.toFixed(2) %></td>
               <td>
-                <input type="image" src="https://image.flaticon.com/icons/svg/1159/1159633.svg" class="edit" data-toggle="modal" data-target="#addItemModal">
+                <input type="image" src="https://image.flaticon.com/icons/svg/1159/1159633.svg" class="edit" data-toggle="modal" data-target="#editItemModal">
               </td>
             </tr>
           <% }) %>
@@ -75,6 +75,41 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" id="addItem" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Item Modal -->
+  <div class="modal fade" id="editItemModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form class="" action="/" method="post">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">ADD ITEM</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id="item-name">
+              <label for="itemName"><strong>Item Name</strong></label>
+              <input type="text" name="itemName" value="" class="itemName">
+            </div>
+            <div id="item-amount">
+              <label for="itemAmount"><strong>Amount</strong></label>
+              <input type="text" name="itemAmount" value="" class="itemAmount">
+            </div>
+            <div id="item-date">
+              <label for="itemDate"><strong>Date</strong></label>
+              <input type="date" name="itemDate" value="2020-03-13" class="itemDate">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" id="addItem" class="btn btn-primary">Delete Item</button>
             <button type="submit" id="addItem" class="btn btn-primary">Save changes</button>
           </div>
         </form>

@@ -36,14 +36,12 @@ const Item = mongoose.model("Item",itemSchema);
 const ItemDate = mongoose.model("Date",dateSchema);
 const Balance = mongoose.model("Balance", balanceSchema);
 
-// console.log(Date());
-// const balance = new Balance({balance:1234, updateDate:Date()});
-// balance.save();
 ///////////////////GET ROUTES/////////////////////////
 
 app.get("/", function(req,res){
   //query the items collection and lets just get all results
   ItemDate.find(function(err, allDates){
+    //get the current balance
     Balance.findOne(function(err,latestBalance){
       if(allDates){
         res.render("main.ejs",{allDates:allDates,balanceAmount:latestBalance});
@@ -85,6 +83,16 @@ app.post("/",function(req,res){
       date.save();
     }
   });
+
+  Balance.findOne(function(err,latestBalance){
+    const newBalanceAmount = latestBalance.balance-itemAmount;
+    const updatedBalance = new Balance({
+      balance:newBalanceAmount,
+      updateDate: Date()
+    });
+    updatedBalance.save();
+  }).sort('-updateDate');
+
   res.redirect("/");
 });
 
