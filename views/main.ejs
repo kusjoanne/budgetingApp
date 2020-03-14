@@ -3,39 +3,32 @@
   <h1>CURRENT BALANCE</h1>
   <div class="my-balance card">
     <div class="card-body">
-      $15,000
+      $<%= balanceAmount.balance.toFixed(2) %>
     </div>
   </div>
   <button type="button" class="btn btn-lg btn-outline-primary add-remove-btn" data-toggle="modal" data-target="#addItemModal">Add Item</button>
   <button type="button" class="btn btn-lg btn-outline-primary settings-btn" data-toggle="modal" data-target="#settingsModal">Settings</button>
   <br><br>
 
-    <!-- add dropdown
-      3 days, 7 days, 14 days, 30 days
-     on switch call a new post method that runs a query and reloads the page using the new results-->
-    <div class="dropdown show">
-      <a class="btn btn-secondary btn-lg dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown link
-      </a>
-
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="#" selected="selected">3 Days</a>
-        <a class="dropdown-item" href="#">7 Days</a>
-        <a class="dropdown-item" href="#">14 Days</a>
-        <a class="dropdown-item" href="#">30 Days</a>
-      </div>
-    </div>
+  <form class="" action="/reload" method="post">
+    <select class="itemDateDrop" name="dateFilter" onChange="this.form.submit()">
+      <option class="dateFilterOption" name="dateFilter" value="3" selected="selected">3 Days</option>
+      <option class="dateFilterOption" name="dateFilter" value="7">7 Days</option>
+      <option class="dateFilterOption" name="dateFilter" value="14">14 Days</option>
+      <option class="dateFilterOption" name="dateFilter" value="30">30 Days</option>
+    </select>
+    <br><br>
+  </form>
 
   <section class="history">
     <% allDates.forEach(function(itemDate){ %>
-      <h2><%= itemDate.date.toDateString() %></h2>
+      <h2><%= itemDate.date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' }) %></h2>
       <br>
       <table class="table table-striped">
         <thead class="table-head">
           <tr>
             <th>Item</th>
             <th>Amount</th>
-            <th>Balance</th>
             <th></th>
           </tr>
         </thead>
@@ -44,7 +37,6 @@
             <tr>
               <td><%= item.name %></td>
               <td>$<%= item.amount.toFixed(2) %></td>
-              <td>$15,000.00</td>
               <td>
                 <input type="image" src="https://image.flaticon.com/icons/svg/1159/1159633.svg" class="edit" data-toggle="modal" data-target="#addItemModal">
               </td>
@@ -78,7 +70,7 @@
             </div>
             <div id="item-date">
               <label for="itemDate"><strong>Date</strong></label>
-              <input type="date" name="itemDate" value="" class="itemDate">
+              <input type="date" name="itemDate" value="2020-03-13" class="itemDate">
             </div>
           </div>
           <div class="modal-footer">
@@ -91,7 +83,7 @@
   </div>
 
   <!--Settings Modal -->
-  <div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <form class="" action="/" method="post">
@@ -130,6 +122,6 @@
         </form>
       </div>
     </div>
-  </div>
+  </div> -->
 
 <%- include("footer") -%>

@@ -25,6 +25,15 @@ h2{
   font-size: 3rem;
 }
 
+select{
+  font-size: 3rem;
+  border-radius: .5rem;
+  border: solid;
+  border-width: thick;
+  border-color: #FA8B8E;
+}
+
+
 footer{
   transform: scaleY(-1);
 }
