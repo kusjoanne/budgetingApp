@@ -1,11 +1,14 @@
-<%- include("header") -%>
-
-  <h1>CURRENT BALANCE</h1>
-  <div class="my-balance card">
-    <div class="card-body">
-      $<%= balanceAmount.balance.toFixed(2) %>
+<%- include("partials/header") -%>
+<body>
+  <header>
+    <h1>CURRENT BALANCE</h1>
+    <div class="my-balance card">
+      <div class="card-body">
+        $<%= balanceAmount.balance.toFixed(2) %>
+      </div>
     </div>
-  </div>
+  </header>
+
   <button type="button" class="btn btn-lg btn-outline-primary add-remove-btn" data-toggle="modal" data-target="#addItemModal">Add Item</button>
   <button type="button" class="btn btn-lg btn-outline-primary settings-btn" data-toggle="modal" data-target="#settingsModal">Settings</button>
   <br><br>
@@ -159,4 +162,4 @@
     </div>
   </div> -->
 
-<%- include("footer") -%>
+<%- include("partials/footer") -%>

@@ -1,26 +1,22 @@
+/* https://colorhunt.co/palette/168262 */
+
 body{
   margin: 0;
   text-align: center;
   font-family: 'Barlow Semi Condensed', sans-serif;
   background-repeat: no-repeat;
-  background-color: #FFF9F7;
-}
-
-header{
-  position: relative;
 }
 
 h1{
-  color: #FA8B8E;
+  color: #FFFFFF;
   font-weight: 400;
-  font-size: 8rem;
-  position: relative;
-  bottom: 8rem;
+  font-size: 7rem;
   margin: auto;
+  padding: 3rem;
 }
 
 h2{
-  color: #FA8B8E;
+  color: #ff8364;
   font-weight: 400;
   font-size: 3rem;
 }
@@ -30,17 +26,19 @@ select{
   border-radius: .5rem;
   border: solid;
   border-width: thick;
-  border-color: #FA8B8E;
+  border-color: #ff8364;
 }
 
+header{
+  background-color:#5f6caf;
+  padding-bottom: 3rem;
+}
 
 footer{
-  transform: scaleY(-1);
+  padding-top:3rem;
+  background-color:#5f6caf;
 }
 
-.watercolor{
-  width: 90%
-}
 .table{
   width: 70%;
   margin:auto;
@@ -49,19 +47,17 @@ footer{
 }
 
 .table-head{
-  background-color: #FA8B8E;
+  background-color: #ffb677;
   font-size: 1.75rem;
   color:white;
 }
 
 .my-balance{
-  position: relative;
-  bottom: 7rem;
   margin:auto;
   font-size: 6rem;
   border: solid;
-  border-width: thick;
-  border-color: #FA8B8E;
+  border-width: .5rem;
+  border-color: #ffb677;
   border-radius: .1em;
   width: 40%;
 }
@@ -70,8 +66,8 @@ footer{
   margin: 2rem;
   width: 400px;
   border: solid;
-  border-width: thick;
-  border-color: #FA8B8E;
+  border-width: .25rem;
+  border-color: #ff8364;
   background-color: white;
   font-weight: 700;
   font-size: 2rem;
@@ -79,8 +75,8 @@ footer{
 }
 
 .btn-outline-primary:hover{
-  border-color: #FA8B8E;
-  background-color: #FA8B8E;
+  border-color: #ff8364;
+  background-color: #ff8364;
 }
 
 .edit{
