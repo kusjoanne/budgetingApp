@@ -122,18 +122,17 @@ app.post("/",function(req,res){
   });
   item.save();
 
+  //Add item
   ItemDate.findOne({date:itemDate,username:username},function(err,itemsDate){
     if(err){
       console.log(err);
     }else{
       //if we already have items for that date just add to that date
       if(itemsDate){
-        console.log("FOUND");
         itemsDate.items.push(item);
         itemsDate.save();
       //if we don't create a new date with that item
       }else{
-        console.log("DOESNT EXIST");
         const date = new ItemDate({
           username: username,
           date: itemDate,
@@ -144,6 +143,7 @@ app.post("/",function(req,res){
     }
   });
 
+  //Update balance
   Balance.findOne(function(err,latestBalance){
     const newBalanceAmount = latestBalance.balance-itemAmount;
     const updatedBalance = new Balance({
@@ -151,10 +151,14 @@ app.post("/",function(req,res){
       balance:newBalanceAmount,
       updateDate: Date()
     });
-    updatedBalance.save();
+    updatedBalance.save(function(err){
+      if(err){
+        console.log(err);
+      } else {
+        res.redirect("/");
+      }
+    });
   }).sort('-updateDate');
-
-  res.redirect("/");
 });
 
 
