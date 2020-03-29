@@ -14,8 +14,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + '/public'));
 app.use(session({
   secret: process.env.PASSPORT_SECRET,
-  resave: false,
-  saveUninitialized: false
+  resave: true,
+  saveUninitialized: true
 }));
 //setsup passport
 app.use(passport.initialize());
@@ -71,6 +71,7 @@ app.listen(port||3000, function(){
 ///////////////////GET ROUTES/////////////////////////
 
 app.get("/", function(req,res){
+  //isAuthenticated() checks if the cookie exists in the request
   if(req.isAuthenticated()){
     ItemDate.find({username:req.user.username},function(err, allDates){
       //get the current balance for this user
@@ -111,34 +112,42 @@ app.post("/",function(req,res){
   const itemName = req.body.itemName;
   const itemAmount = req.body.itemAmount;
   const itemDate = req.body.itemDate;
-  console.log("Passed Item Date From Form " + itemDate);
-  console.log(typeof itemDate);
+  const username = req.user.username;
+  console.log(username);
+
   const item = new Item({
+    username: username,
     name: itemName,
     amount: itemAmount
   });
   item.save();
 
-  ItemDate.findOne({date:itemDate},function(err,itemsDate){
-    //if we already have items for that date just add to that date
-    if(itemsDate){
-      console.log("FOUND");
-      itemsDate.items.push(item);
-      itemsDate.save();
-    //if we don't create a new date with that item
+  ItemDate.findOne({date:itemDate,username:username},function(err,itemsDate){
+    if(err){
+      console.log(err);
     }else{
-      console.log("DOESNT EXIST");
-      const date = new ItemDate({
-        date: itemDate,
-        items: [item]
-      });
-      date.save();
+      //if we already have items for that date just add to that date
+      if(itemsDate){
+        console.log("FOUND");
+        itemsDate.items.push(item);
+        itemsDate.save();
+      //if we don't create a new date with that item
+      }else{
+        console.log("DOESNT EXIST");
+        const date = new ItemDate({
+          username: username,
+          date: itemDate,
+          items: [item]
+        });
+        date.save();
+      }
     }
   });
 
   Balance.findOne(function(err,latestBalance){
     const newBalanceAmount = latestBalance.balance-itemAmount;
     const updatedBalance = new Balance({
+      username: username,
       balance:newBalanceAmount,
       updateDate: Date()
     });
@@ -194,25 +203,23 @@ app.post("/initialsetup",function(req,res){
 });
 
 app.post("/login",function(req,res){
-  const inputUsername = req.body.inputEmail;
-  const inputPassword = req.body.inputPassword;
+  const user = new User({
+    username: req.body.username,
+    password: req.body.password
+  });
 
-  User.findOne({username:inputUsername},function(err,user){
+  req.login(user,function(err){
     if(err){
       console.log(err);
-    }else{
-      if(user){
-        console.log(user);
-        if(bcrypt.compareSync(inputPassword, user.password)){
-          res.redirect("/");
-        }else{
-          res.redirect("/login");
-        }
-      }
+    } else {
+      passport.authenticate("local")(req,res,function(){
+        res.redirect("/");
+      });
     }
   });
 });
 
 app.post("/logout",function(req,res){
-
+  req.logout();
+  res.redirect("/login");
 });
